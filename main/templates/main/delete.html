@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>DELETE</title>
+{% endblock title %}
+
+{% block content %}
+<div class="landing-page2 screen">
+    <img class="image2" src="/static/images/delete.jpg">
+    <div class="flex-col">
+        <div class="overlap-group1">
+            <a href="{% url 'home' %}">
+                <div class="homepage valing-text-middle poppins-normal-natural-gray-24px">HOMEPAGE</div>  
+            </a>
+            <img class="home-1" src="/static/images/image2.png">
+        </div>    
+    </div>
+</div>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        
+        <div style="text-align: center;" class="alert alert-danger" role="alert">
+            Do you want erase "{{ tasks.emp_task_name }}"?
+        </div>
+        
+        <p style="text-align: center; padding-top: 1em;">
+            
+            <a href="{% url 'home' %}"> <button  type="button" class="btn btn-primary" ">Cancel</button> </a>
+        </p>
+
+        <p style="text-align: center; padding-bottom: 1em;">
+            <input class="btn btn-danger" type="submit" value="Continue">
+        </p>
+    </form>
+{% endblock content %}

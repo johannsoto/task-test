@@ -1,0 +1,25 @@
+Django                 4.1.1
+django-environ         0.9.0
+django-request         1.6.2
+virtualenv             20.16.5
+virtualenvwrapper-win  1.2.7
+
+base de datos SQLite
+DB Browser for SQLite
+
+run:
+
+python manage.py runserver
+
+lenguajes usados:
+python
+html
+css
+
+frameworks:
+django
+bootstrap
+forms django
+
+otros:
+figma 

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>EDIT</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="landing-page2 screen">
+    <img class="image2" src="/static/images/edit.jpg">
+    <div class="flex-col">
+        <div class="overlap-group1">
+            <a href="{% url 'home' %}">
+                <div class="homepage valing-text-middle poppins-normal-natural-gray-24px">HOMEPAGE</div>  
+            </a>
+            <img class="home-1" src="/static/images/image2.png">
+        </div>    
+    </div>
+</div>
+
+
+<h1 class="title-task" style="text-align: center; padding-top: 1em; padding-bottom: 1em;">New Task</h1>
+
+<form action="" method="POST" enctype="multipart/form-data" style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-success">
+</form>
+{% endblock content %}

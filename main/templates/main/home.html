@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>HomePage</title>
+{% endblock title %}
+{% block content %}
+*****************************************************************************HEADER******************************************************************
+<div class="landing-page screen">
+    <img class="image1" src="/static/images/image1.jpg">
+    <div class="flex-col">
+        <div class="overlap-group1">
+            <a href="{% url 'home' %}">
+                <div class="homepage valing-text-middle poppins-normal-natural-gray-24px">HOMEPAGE</div>  
+            </a>
+            <img class="home-1" src="/static/images/image2.png">
+        </div>    
+        <h1 class="title">My List Of Task</h1>
+        <p class="to-do-list-web-appli">To-do list web application with Django, you can create,read, eliminate and edit your task.</p>
+        <div class="overlap-group">
+            <a href="{% url 'create' %}">
+                <div class="start-now valing-text-middle">Start Now</div>
+            </a>
+        </div>
+    </div>
+</div>
+*******************************************************************************TABLE***************************************************************
+<h1 class="title-task" style="text-align: center; padding-top: 1em; padding-bottom: 1em;">My Task</h1>
+
+    <table class="table table-striped" style="width: 1000px; text-align: center; margin-left: auto; margin-right: auto;">
+        <thead class="thead">
+            <tr>
+                <th scope="col">CHECK</th>
+                <th scope="col">PRIORITY</th>
+                <th scope="col">TASK NAME</th>
+                <th scope="col">DUE DATE</th>
+                <th scope="col">DESCRIPTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in tasks %}
+            {% if  emp.emp_priority == "HIGH" %}
+                <tr>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <th scope="row"><input type="checkbox"></th>
+                    </form>
+                    <th scope="row" style="color: red;">{{ emp.emp_priority }}</th>
+                    <td style="color: red;">{{ emp.emp_task_name }}</td>
+                    <td style="color: red;">{{ emp.emp_due_date }}</td>
+                    <td style="color: red;">{{ emp.emp_description }}</td>
+                    <td ">
+                        <a href="{% url 'delete' emp.id %}" style="color: red;">Delete</a>
+                        <a style="margin-right: 30px; color: red;" href="{% url 'edit' emp.id %}">Edit</a>
+                    </td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+
+            {% for emp in tasks %}
+            {% if  emp.emp_priority == "LOW" %}
+                <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <th scope="row" style="color: green;">{{ emp.emp_priority }}</th>
+                    <td style="color: green;">{{ emp.emp_task_name }}</td>
+                    <td style="color: green;">{{ emp.emp_due_date }}</td>
+                    <td style="color: green;">{{ emp.emp_description }}</td>
+                    <td ">
+                        <a href="{% url 'delete' emp.id %}" style="color: green;">Delete</a>
+                        <a style="margin-right: 30px; color: green;" href="{% url 'edit' emp.id %}">Edit</a>
+                    </td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+            {% for emp in tasks %}
+            {% if  emp.emp_priority == "MEDIUM" %}
+                <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <th scope="row" style="color: goldenrod;">{{ emp.emp_priority }}</th>
+                    <td style="color: goldenrod;">{{ emp.emp_task_name }}</td>
+                    <td style="color: goldenrod;">{{ emp.emp_due_date }}</td>
+                    <td style="color: goldenrod;">{{ emp.emp_description }}</td>
+                    <td ">
+                        <a href="{% url 'delete' emp.id %}" style="color: goldenrod;">Delete</a>
+                        <a style="margin-right: 30px; color: goldenrod;" href="{% url 'edit' emp.id %}">Edit</a>
+                    </td>
+                </tr>
+            {% endif %}
+            {% endfor %}           
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a href="{% url 'create' %}"><button type="button" class="btn btn-primary">AÑADIR</button></a>
+    </div>
+    ***************************************************************************END*********************************************************************    
+{% endblock content %}
